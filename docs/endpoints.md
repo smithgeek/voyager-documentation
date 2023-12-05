@@ -22,6 +22,44 @@ public class WeatherForecastEndpoint
 
 Add Get, Post, Put, etc methods to handle those http methods.
 
+The first argument to your function must be your request object. All other function arguments will be [injected](dependency-injection).
+
+### Async
+
+The handler methods can be sync or async, just return a `Task` or `ValueTask` if you want to run asynchronously. You can get a cancellation token if desired.
+
+```cs
+[VoyagerEndpoint("weatherForecast/{city}")]
+public class WeatherForecastEndpoint
+{
+    public async Task<WeatherForecast> Get(WeatherForecastRequest request, CancellationToken cancellatoinToken)
+    {
+        // ...
+    }
+}
+```
+
+### Typed Result
+
+If your method just returns your response object it will be sent back to the client with a 200 status code. If you want to control response codes you can instead return an `IResult` and use the `TypedResults` helpers. Voyager will still determine all your response types for the OpenApi specification.
+
+```cs
+[VoyagerEndpoint("weatherForecast/{city}")]
+public class WeatherForecastEndpoint
+{
+    public IResult Get(WeatherForecastRequest request)
+    {
+        var city = FindCity(request.City);
+        if(city is null)
+        {
+            return TypedResults.NotFound();
+        }
+
+        return TypedResults.Ok(new WeatherForecastResponse());
+    }
+}
+```
+
 ## Requests and Responses
 
 Requests and responses are just plain c# objects.
