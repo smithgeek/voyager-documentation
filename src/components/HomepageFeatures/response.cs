@@ -1,4 +1,4 @@
-public class WeatherForecastResponse
+public class WeatherForecast
 {
 	public required string City { get; init; }
 
