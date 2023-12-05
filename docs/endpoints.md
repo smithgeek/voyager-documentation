@@ -32,7 +32,7 @@ The handler methods can be sync or async, just return a `Task` or `ValueTask` if
 [VoyagerEndpoint("weatherForecast/{city}")]
 public class WeatherForecastEndpoint
 {
-    public async Task<WeatherForecast> Get(WeatherForecastRequest request, CancellationToken cancellatoinToken)
+    public async Task<WeatherForecast> Get(WeatherForecastRequest request, CancellationToken cancellationToken)
     {
         // ...
     }
