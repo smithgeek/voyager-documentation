@@ -39,25 +39,17 @@ export default function Home(): JSX.Element {
 		>
 			<HomepageHeader />
 			<main>
-				<div
-					style={{
-						display: "flex",
-						gap: "1rem",
-						flexDirection: "row",
-						justifyContent: "space-evenly",
-						padding: "1rem",
-					}}
-				>
-					<div style={{ flex: 1 }}>
+				<div className="flex gap-2 justify-evenly p-2 flex-col lg:flex-row">
+					<div className="flex-1">
 						<CodeBlock language="csharp">{RequestSource}</CodeBlock>
 					</div>
-					<div style={{ flex: 1 }}>
+					<div className="flex-1">
 						<CodeBlock language="csharp">
 							{ResponseSource}
 						</CodeBlock>
 					</div>
 				</div>
-				<div style={{ padding: "1rem" }}>
+				<div className="px-2">
 					<CodeBlock language="csharp">{EndpointSource}</CodeBlock>
 				</div>
 			</main>
