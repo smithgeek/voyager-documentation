@@ -25,6 +25,7 @@ using Voyager;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.services.AddVoyager();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(config => config.AddVoyager());
 
 var app = builder.Build();
@@ -36,18 +37,18 @@ If you're adding to an existing project the key changes are
 
 ```cs
 using Voyager;
-```
 
-```cs
+
 builder.services.AddVoyager();
-```
 
-```cs
+
 app.MapVoyager();
 ```
 
-If you're using Swashbuckle you'll want to add Voyager in it's configuration as well.
+If you're using Swashbuckle you'll want to add Voyager in it's configuration as well as add the endpoints api explorer.
 
 ```cs
+builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(config => config.AddVoyager());
 ```
