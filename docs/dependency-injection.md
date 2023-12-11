@@ -26,7 +26,7 @@ public class MyEndpoint
 }
 ```
 
-Finally you can also add parameters to your handler method to have them injected. The only requirement is that the first parameter is your request object.
+Finally you can also add parameters to your handler method to have them injected.
 
 ```cs
 public class MyEndpoint

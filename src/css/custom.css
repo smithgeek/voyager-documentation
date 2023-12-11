@@ -44,3 +44,8 @@ h2{
 h3{
 	@apply text-xl;
 }
+
+a, .navbar__link{
+	display: flex;
+	align-items: center;
+}

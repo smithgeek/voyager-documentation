@@ -7,7 +7,7 @@ title: Validation
 
 ## Fluent Validation
 
-Validation is performed using Fluent Validation. Add a static function to your request object that takes a parameter of type `AbstractValidator<RequestType>` any other parameters will be injected from the dependency container.
+Validation is performed using Fluent Validation. Add a static function to your request object that takes a parameter of type `AbstractValidator<RequestType>` any other parameters will be injected from the <u>[dependency container](dependency-injection)</u>.
 
 ```cs
 public class WeatherForecastRequest
@@ -25,7 +25,7 @@ public class WeatherForecastRequest
 }
 ```
 
-Voyager will automatically add `NotNull` rules for properties that are `required` in the request object.
+Voyager will automatically add `NotNull` rules for properties that are not nullable in the request object.
 
 ## Scoped services
 
@@ -43,9 +43,9 @@ public class WeatherForecastRequest
     public static void AddValidations(AbstractValidator<WeatherForecastRequest> validator, IHttpContextAccessor context)
     {
         validator.RuleFor(r => r.Days).Must(req => {
-			var myService = context.HttpContext.RequestServices.GetRequiredService<IMyService>();
-			// perform validation
-		});
+            var myService = context.HttpContext.RequestServices.GetRequiredService<IMyService>();
+            // perform validation
+        });
     }
 }
 ```
@@ -57,21 +57,14 @@ By default Voyager will return a 400 `BadRequest` if a validation rule fails. It
 If you want to handle the errors yourself or perform some other custom error handling, just add a `ValidationResult` parameter to your endpoint method.
 
 ```cs
-public class WeatherForecastRequest
+[VoyagerEndpoint("weatherForecast/{city}")]
+public class WeatherForecastEndpoint
 {
-    [FromQuery]
-    public int Days { get; set; } = 5;
-
     public WeatherForecastResponse Get(WeatherForecastRequest request, ValidationResult validationResults)
     {
         if(validationResults.IsValid)
         {
         }
-    }
-
-    public static void AddValidationRules(AbstractValidator<WeatherForecastRequest> validator)
-    {
-        validator.RuleFor(r => r.Days).InclusiveBetween(1, 5);
     }
 }
 ```

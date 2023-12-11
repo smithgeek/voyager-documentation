@@ -35,6 +35,7 @@ const config: Config = {
 			{
 				docs: {
 					sidebarPath: "./sidebars.ts",
+					editUrl: `https://github.com/smithgeek/voyager-documentation/blob/main`,
 				},
 				// blog: {
 				// 	showReadingTime: true,
@@ -65,6 +66,11 @@ const config: Config = {
 					position: "left",
 					label: "Documentation",
 				},
+				{
+					to: "/benchmarks",
+					label: "Benchmarks",
+					position: "left",
+				},
 				// { to: "/blog", label: "Blog", position: "left" },
 				{
 					href: "https://github.com/smithgeek/voyager",
@@ -82,6 +88,10 @@ const config: Config = {
 						{
 							label: "Documentation",
 							to: "/docs/getting-started",
+						},
+						{
+							label: "Benchmarks",
+							to: "/benchmarks",
 						},
 					],
 				},
@@ -112,6 +122,10 @@ const config: Config = {
 						{
 							label: "GitHub",
 							href: "https://github.com/smithgeek/voyager",
+						},
+						{
+							label: "Documentation GitHub",
+							href: "https://github.com/smithgeek/voyager-documentation",
 						},
 					],
 				},

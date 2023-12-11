@@ -30,6 +30,8 @@ builder.Services.AddSwaggerGen(config => config.AddVoyager());
 
 var app = builder.Build();
 app.MapVoyager();
+app.MapSwagger();
+app.UseSwaggerUI();
 app.Run();
 ```
 
