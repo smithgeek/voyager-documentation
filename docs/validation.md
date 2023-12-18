@@ -7,7 +7,7 @@ title: Validation
 
 ## Fluent Validation
 
-Validation is performed using Fluent Validation. Add a static function to your request object that takes a parameter of type `AbstractValidator<RequestType>` any other parameters will be injected from the <u>[dependency container](dependency-injection)</u>.
+Validation is performed using Fluent Validation. Add a static function to your request object that takes a parameter of type `AbstractValidator<RequestType>` any other parameters will be injected from the [dependency container](dependency-injection).
 
 ```cs
 public class WeatherForecastRequest
@@ -52,7 +52,7 @@ public class WeatherForecastRequest
 
 ## Errors
 
-By default Voyager will return a 400 `BadRequest` if a validation rule fails. It uses the `Results.ValidationProblem` response object and includes all of the validation errors.
+By default Voyager will return a 400 `BadRequest` if a validation rule fails. It uses the [Results.ValidationProblem](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.results.validationproblem?view=aspnetcore-7.0) method and includes all of the validation errors.
 
 If you want to handle the errors yourself or perform some other custom error handling, just add a `ValidationResult` parameter to your endpoint method.
 

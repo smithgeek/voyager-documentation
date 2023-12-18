@@ -45,7 +45,11 @@ h3{
 	@apply text-xl;
 }
 
-a, .navbar__link{
+.footer__link-item, .navbar__link, .theme-edit-this-page{
 	display: flex;
 	align-items: center;
+}
+
+a{
+	color: var(--ifm-link-hover-color);
 }

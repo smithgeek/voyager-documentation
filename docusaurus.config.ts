@@ -43,6 +43,7 @@ const config: Config = {
 				theme: {
 					customCss: "./src/css/custom.css",
 				},
+				pages: {},
 			} satisfies Preset.Options,
 		],
 	],

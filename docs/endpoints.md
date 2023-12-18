@@ -22,11 +22,11 @@ public class WeatherForecastEndpoint
 
 Add Get, Post, Put, etc methods to handle those http methods.
 
-If your enpoint uses request data (from body, query string, etc) you should add an argument named req or request to your method. If you don't need any request data you can skip this parameter. All other function arguments will be <u>[injected](dependency-injection)</u>.
+If your endpoint uses request data (from body, query string, etc) you should add an argument named req or request to your method. If you don't need any request data you can skip this parameter. All other function arguments will be [injected](dependency-injection).
 
 ### Async
 
-The handler methods can be sync or async, just return a `Task` or `ValueTask` if you want to run asynchronously. You can get a cancellation token if desired.
+The handler methods can be sync or async, just return a `Task` or `ValueTask` if you want to run asynchronously. You can inject a cancellation token if desired.
 
 ```cs
 [VoyagerEndpoint("weatherForecast/{city}")]
