@@ -29,7 +29,7 @@ Voyager will automatically add `NotNull` rules for properties that are not nulla
 
 ## Scoped services
 
-If you need to use scoped services during your validation you can inject the `IHttpContextAccessor` and resolve services from that.
+If you need to use scoped services during your validation you can inject the `HttpContext` and resolve services from that.
 
 ```cs
 public class WeatherForecastRequest
@@ -40,10 +40,10 @@ public class WeatherForecastRequest
     [FromQuery]
     public int Days { get; set; } = 5;
 
-    public static void AddValidations(AbstractValidator<WeatherForecastRequest> validator, IHttpContextAccessor context)
+    public static void AddValidations(AbstractValidator<WeatherForecastRequest> validator, HttpContext context)
     {
         validator.RuleFor(r => r.Days).Must(req => {
-            var myService = context.HttpContext.RequestServices.GetRequiredService<IMyService>();
+            var myService = context.RequestServices.GetRequiredService<IMyService>();
             // perform validation
         });
     }
