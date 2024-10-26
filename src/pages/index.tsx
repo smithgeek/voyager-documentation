@@ -47,7 +47,9 @@ export default function Home(): JSX.Element {
 			<div className="max-w-7xl mx-auto my-2">
 				<HomepageHeader />
 				<div className="px-2">
-					<CodeBlock language="csharp">{EndpointSource}</CodeBlock>
+					<CodeBlock className="max-w-[94vw]" language="csharp">
+						{EndpointSource}
+					</CodeBlock>
 				</div>
 				<div className={styles.buttons}>
 					<Link
@@ -61,13 +63,19 @@ export default function Home(): JSX.Element {
 					<div className="flex gap-2 justify-evenly p-2 flex-col">
 						<div className="flex-1">
 							<span className="text-lg">Request</span>
-							<CodeBlock language="csharp">
+							<CodeBlock
+								className="max-w-[94vw]"
+								language="csharp"
+							>
 								{RequestSource}
 							</CodeBlock>
 						</div>
 						<div className="flex-1">
 							<span className="text-lg">Response</span>
-							<CodeBlock language="csharp">
+							<CodeBlock
+								className="max-w-[94vw]"
+								language="csharp"
+							>
 								{ResponseSource}
 							</CodeBlock>
 						</div>
