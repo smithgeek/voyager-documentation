@@ -7,17 +7,11 @@ title: Validation
 
 ## Fluent Validation
 
-Validation is performed using Fluent Validation. Add a static function to your request object that takes a parameter of type `AbstractValidator<RequestType>` any other parameters will be injected from the [dependency container](dependency-injection).
+Validation is performed using [Fluent Validation](https://docs.fluentvalidation.net/en/latest/). Add a static function to your request object that takes a parameter of type `AbstractValidator<RequestType>` any other parameters will be injected from the [dependency container](dependency-injection).
 
 ```cs
-public class WeatherForecastRequest
+public record WeatherForecastRequest([FromRoute]string City, [FromQuery]int Days = 5)
 {
-    [FromRoute]
-    public required string City { get; set; }
-
-    [FromQuery]
-    public int Days { get; set; } = 5;
-
     public static void AddValidationRules(AbstractValidator<WeatherForecastRequest> validator)
     {
         validator.RuleFor(r => r.Days).InclusiveBetween(1, 5);
@@ -32,14 +26,8 @@ Voyager will automatically add `NotNull` rules for properties that are not nulla
 If you need to use scoped services during your validation you can inject the `HttpContext` and resolve services from that.
 
 ```cs
-public class WeatherForecastRequest
+public record WeatherForecastRequest([FromRoute]string City, [FromQuery]int Days = 5)
 {
-    [FromRoute]
-    public required string City { get; set; }
-
-    [FromQuery]
-    public int Days { get; set; } = 5;
-
     public static void AddValidations(AbstractValidator<WeatherForecastRequest> validator, HttpContext context)
     {
         validator.RuleFor(r => r.Days).Must(req => {

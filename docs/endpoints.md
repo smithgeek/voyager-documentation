@@ -24,18 +24,25 @@ Add Get, Post, Put, etc methods to handle those http methods.
 
 If your endpoint uses request data (from body, query string, etc) you should add an argument named req or request to your method. If you don't need any request data you can skip this parameter. All other function arguments will be [injected](dependency-injection).
 
+### Static Methods
+
+Methods can be static as well.
+
+```cs
+public static WeatherForecast Get(WeatherForecastRequest request)
+{
+	// ...
+}
+```
+
 ### Async
 
 The handler methods can be sync or async, just return a `Task` or `ValueTask` if you want to run asynchronously. You can inject a cancellation token if desired.
 
 ```cs
-[VoyagerEndpoint("weatherForecast/{city}")]
-public class WeatherForecastEndpoint
+public async Task<WeatherForecast> Get(WeatherForecastRequest request, CancellationToken cancellationToken)
 {
-    public async Task<WeatherForecast> Get(WeatherForecastRequest request, CancellationToken cancellationToken)
-    {
-        // ...
-    }
+	// ...
 }
 ```
 
@@ -65,14 +72,7 @@ public class WeatherForecastEndpoint
 Requests and responses are just plain c# objects.
 
 ```cs
-public class WeatherForecastRequest
-{
-    [FromRoute]
-    public required string City { get; set; }
-
-    [FromQuery]
-    public int Days { get; set; } = 5;
-}
+public record WeatherForecastRequest([FromRoute]string City, [FromQuery]int Days = 5);
 
 public record WeatherForecastResponse(string City, DateOnly Date, int TemperatureC, string? Summary)
 {
@@ -98,6 +98,8 @@ class MyRequest
 
     // Would match the query string ?d=2
     [FromQuery("d")]
-    public ind Days { get; set; }
+    public int Days { get; set; }
 }
+// or using a record
+record MyRequest(int Count, [FromRoute]string City, [FromQuery("d")]int Days);
 ```

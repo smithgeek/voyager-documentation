@@ -13,26 +13,25 @@ function HomepageHeader() {
 	const { siteConfig } = useDocusaurusContext();
 	return (
 		<header className={clsx("", styles.heroBanner)}>
-			<div className="container">
+			<div className="container py-2">
 				{/* <Heading as="h1" className="hero__title">
 					{siteConfig.title}
 				</Heading> */}
 				<p>
-					Define endpoints in their own class throughout your code
-					base and have voyager wire them up for you with it's source
-					generator. There is no performance penalty because the work
-					is done during compilation! No interfaces to implement or
-					base classes to inherit from. Just write the logic and let
-					voyager write the boilerplate.
+					<span>
+						Define endpoints in their own class throughout your code
+						base and have voyager wire them up for you with it's
+						source generator. There is no performance penalty
+						because the work is done during compilation!
+					</span>
+					<span className="font-extrabold mx-1 text-blue-500">
+						No interfaces to implement or base classes to inherit
+					</span>
+					<span>
+						from. Just write the logic and let voyager write the
+						boilerplate.
+					</span>
 				</p>
-				<div className={styles.buttons}>
-					<Link
-						className="button button--secondary button--lg"
-						to="/docs/getting-started"
-					>
-						Get Started
-					</Link>
-				</div>
 			</div>
 		</header>
 	);
@@ -46,12 +45,20 @@ export default function Home(): JSX.Element {
 			description="Easy way to set up minimal APIs."
 		>
 			<div className="max-w-7xl mx-auto my-2">
+				<HomepageHeader />
 				<div className="px-2">
 					<CodeBlock language="csharp">{EndpointSource}</CodeBlock>
 				</div>
-				<HomepageHeader />
+				<div className={styles.buttons}>
+					<Link
+						className="button button--secondary button--lg"
+						to="/docs/getting-started"
+					>
+						Get Started
+					</Link>
+				</div>
 				<main>
-					<div className="flex gap-2 justify-evenly p-2 flex-col lg:flex-row">
+					<div className="flex gap-2 justify-evenly p-2 flex-col">
 						<div className="flex-1">
 							<span className="text-lg">Request</span>
 							<CodeBlock language="csharp">

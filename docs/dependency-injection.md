@@ -26,7 +26,7 @@ public class MyEndpoint
 }
 ```
 
-Finally you can also add parameters to your handler method to have them injected. If your endpoint class doesn't have any fields or properties voyager will make your endpoint a singleton to improve performance.
+Finally you can also add parameters to your handler method to have them injected. If your endpoint class doesn't have any fields or properties voyager will make your endpoint a singleton to improve performance, or just make your method static and avoid creating an instance of your class.
 
 ```cs
 public class MyEndpoint
